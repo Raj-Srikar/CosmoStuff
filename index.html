@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html id="top">
+<head>
+	<title>CosmoStuff | Space Blog</title>
+	<style type="text/css">
+		html{
+			scroll-behavior: smooth;
+		}
+		body{
+			background-image: url("https://wallpapercave.com/wp/wp6471476.jpg");
+			background-color: black;
+			background-repeat: repeat;
+			background-size: 50%;
+			color: white;
+		}
+		#myBtn {
+			display: none;
+			position: fixed;
+			bottom: 25px;
+			right: 35px;
+			z-index: 99;
+			font-size: 18px;
+			border: none;
+			outline: none;
+			background-color: #0086cd;
+			color: white;
+			cursor: pointer;
+			padding: 15px 20px;
+			border-radius: 50%;
+			transform: rotate(90deg);
+			box-shadow: 0px 0px 8px 3px #56c5ff8f;
+		}
+		#myBtn:hover {
+			background-color: #56c5ff;
+			color: #003856;
+		}
+		body>header{
+			padding: 1px;
+			text-align: center;
+			color: white;
+			background: #666666;
+			background-image: url("https://hdwallpaperim.com/wp-content/uploads/2017/08/22/435641-ultra-wide-space.jpg");
+			background-repeat: repeat;
+			background-size: 100%
+		}
+		h1{
+			font-size: 350%;
+			text-transform: uppercase;
+			font-family: verdana;
+			padding: 30px 0px 10px;
+			display: block;
+		}
+		#cosmo{
+			display: inline-block;
+			color: #ebd900;
+		}
+		#stuff{
+			display: inline-block;
+			color: #00b8ff;
+		}
+		nav>a, nav>div{
+			color: #ffffff;
+			text-transform: uppercase;
+			display: inline-block;
+			/*font-size: 120%;*/
+			font-weight: bold;
+			background: #f8d1ff66;
+			margin: 0px 10px 30px;
+			padding: 15px;
+			width: 12%;
+			border-radius: 5px;
+			text-decoration: none;
+			cursor: pointer;
+			transition: color 0.3s, background 0.3s;
+		}
+		nav>a:hover,nav>a:focus{
+			color: black;
+			background: #f8d1ff;
+		}
+		.dropbtn {
+			cursor: pointer;
+			width: 100%;
+		}
+		.dropdown {
+			display: inline-block;
+		}
+		.dropdown-content {
+			display: block;
+			visibility: hidden;
+			opacity: 0;
+  			transition: visibility 0s, opacity 0.3s linear;
+  			transition-delay: 0.3s;
+		  	position: absolute;
+		  	transform: translateY(15px);
+			background-color: black;
+			border: 1px solid #fff69f;
+			border-bottom-right-radius: 5px;
+			border-bottom-left-radius: 5px;
+			min-width: 175px;
+			box-shadow: 0px 5px 10px 2px rgb(238 255 0 / 31%);
+			z-index: 1;
+		}
+		.dropdown-content a {
+			color: black;
+			padding: 12px 20px;
+			text-decoration: none;
+			border-radius: 5px;
+			display: block;
+			transition: background 0.3s;
+		}
+		.dropdown-content a:hover, .dropdown-content a:focus{
+			background: #424236;
+		}
+		.dropdown:hover .dropdown-content,.dropdown:focus .dropdown-content{
+			visibility: visible;
+			opacity: 1;
+			display: block;	
+		}
+		.dropdown:hover,.dropdown:focus  {
+			background-color: #f8d1ff;
+			color:black;
+		}
+		.nav-slideshow{
+			margin-top: 50px;
+		}
+		.mySlides {
+			display: none;
+			width: 100%;
+		}
+		.mySlides img {
+			height: 250px;
+			object-fit: cover;
+			object-position: 0 45%;
+			border-radius: 10px;
+		}
+		.slideshow-container {
+			max-width: 1000px;
+			position: relative;
+			border: 1px solid #d5a8ff;
+			border-radius: 10px;
+			margin: auto;
+			box-shadow: 0px 3px 11px 9px #a63eff6e, 0px 0 3px 0 #ffffff61
+		}
+		.slideshow-container:hover .text{
+			font-size: 27px;
+			text-decoration: underline;
+		}
+		.prev, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			padding: 16px;
+			margin-top: -22px;
+			color: white;
+			font-weight: bold;
+			font-size: 18px;
+			transition: 0.6s ease;
+			border-radius: 0 3px 3px 0;
+			user-select: none;
+		}
+		.next {
+			right: 0;
+			border-radius: 3px 0 0 3px;
+		}
+		.prev:hover, .next:hover {
+			background-color: white;
+			color: black;
+		}
+		.text {
+			text-align: center;
+			color: #f2f2f2;
+			background-color: #000000bd;
+			font-size: 25px;
+			font-family: Arial;
+			padding: 8px 12px;
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			box-sizing: border-box;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+			transition: font-size 1s;
+		}
+		.numbertext {
+			color: #f2f2f2;
+			background-color: black;
+			font-size: 25px;
+			padding: 8px 12px;
+			position: absolute;
+			border-top-left-radius: 10px; 
+			border-bottom-right-radius: 10px;
+			top: 0;
+		}
+		.dot {
+			cursor: pointer;
+			height: 10px;
+			width: 10px;
+			margin: 0 2px;
+			background-color: #e8c5ff;
+			border-radius: 50%;
+			display: inline-block;
+			transition: background-color 0.6s ease;
+		}
+		.active {
+			background-color: #b300b3;
+		}
+		.dot:hover {
+			background-color: #d596ff;
+		}
+		.fade {
+			animation-name: fade;
+			animation-duration: 1.5s;
+		}
+		@keyframes fade {
+			from {opacity: .4} 
+			to {opacity: 1}
+		}
+		main{
+			margin-bottom: 50px;
+			position: center;
+			text-align: center;
+			height: 100%;
+		}
+		.left{
+			display: inline-block;
+			float:left;
+			width: 33.3%;
+		}
+		.middle{
+			display: inline-block;
+			text-align:center;
+			width: 33.3%;
+		}
+		.right{
+			float: right;
+			display: inline-block;
+			width: 33.3%;
+		}
+		article{
+			display: block;
+			background-color: #f8d1ff;
+			box-shadow: 0 4px 8px 0 rgb(221 166 255 / 60%), 0 6px 20px 0 rgb(221 105 255 / 60%);
+			border-radius: 5px;
+			margin: 50px 25px;
+			transition: margin 1s, background-color 1s;
+			cursor: pointer;
+		}
+		article:hover{
+			margin: 50px 18px 30px;
+			background-color: #fae5fd;
+		}
+		article>header>div{
+			padding: 10px;
+		}
+		article img, article embed{
+			border-radius: 5px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			width:100%;
+		}
+		article div{
+			padding: 0px 15px 5px;
+		}
+		article h2 a{
+			text-transform: capitalize;
+			font-family: arial;
+			color: purple;
+			text-decoration: none;
+		}
+		article h2{
+			padding: 0 10px 0;
+			transition: font-size 1s;
+		}
+		article h2:hover{
+			text-decoration: underline;
+		}
+		article:hover h2{
+			font-size: 160%;
+		}
+		article p{
+			text-align: left;
+			color: #1c001c;
+		}
+		p a{
+			color: #2828bb;
+		}
+		footer{
+			margin-top: 150px;
+			text-align: center;
+			border-top: 1px solid;
+		}
+		#myCanvas{
+			margin-top: 60px;
+			border:1px solid cyan;
+			border-radius: 10px;
+			box-shadow:0 0px 30px 20px rgb(57 223 223 / 20%), 0 0px 25px 15px rgb(255 255 255 / 24%);
+			width: 301px;
+			transition: width 0.5s, transform 0.5s;
+		}
+		#myCanvas:hover{
+			width:310px;
+			transform: rotate(3deg);
+		}
+	</style>
+
+	
+
+</head>
+<body>
+	<a href="#top"><button id="myBtn" title="Go to top"><b>&#10094;</b></button></a>
+	<header>
+		<h1 id="cosmo">Cosmo</h1><h1 id="stuff">Stuff</h1>
+		<nav>
+			<a href="#facts" title="Know the Cosmos">Facts</a>
+			<a href="#updates" title="Current & Upcomming Missions">Mission Updates</a>
+			<a href="#live" title="NASA Live view of Earth from ISS">Earth Live</a>
+			<a href="#photography" title="Astronomy Picture Of the Day">A.P.O.D</a>
+			<div class="dropdown">
+			  <a class="dropbtn">Social Media</a>
+			  <div class="dropdown-content">
+			    <a href="#" style="color: #80a1e2">Facebook</a>
+			    <a href="#" style="color: #e278c0">Instagram</a>
+			    <a href="#" style="color: #1DA1F2">Twitter</a>
+			    <a href="#" style="color: #FF0000">YouTube</a>
+			  </div>
+			</div>
+			<a href="#about" title="Know more about us">About Us</a>
+		</nav>
+	</header>
+	
+	<div class="nav-slideshow">
+		<div class="slideshow-container">
+			<div class="mySlides fade">
+				<div class="numbertext">1 / 9</div>
+				<a href="#article1" onclick="triggerEvent(this)"><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/blog_iss064e027247.jpg" style="width:100%">
+				<div class="text">Saturday Spacewalk Set as Crew Works Space Gardening</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">2 / 9</div>
+				<a href="#article2" onclick="triggerEvent(this)"><img src="https://mars.nasa.gov/system/news_items/main_images/8678_21379_PIA22107-web.jpg" style="width:100%">
+				<div class="text">Stories of Perseverance</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">3 / 9</div>
+				<a href="#article3" onclick="triggerEvent(this)"><img src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/nhq202101160007_0.jpg" style="width:100%">
+				<div class="text">Green Run Update: NASA Targets March 18 for SLS Hot Fire Test</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">4 / 9</div>
+				<a href="#article4" onclick="triggerEvent(this)"><img src="https://blogs.nasa.gov/artemis/wp-content/uploads/sites/303/2021/03/KSC-20210303-PH-ILW01_0008-1024x686.jpg" style="width:100%">
+				<div class="text">Mammoth Artemis I Rocket Boosters Stacked on Mobile Launcher</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">5 / 9</div>
+				<a href="#article5" onclick="triggerEvent(this)"><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/MSFC-202000048.jpg" style="width:100%">
+				<div class="text">Astronauts Relax as Station Science Command Celebrates 20 Years</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">6 / 9</div>
+				<a href="#article6" onclick="triggerEvent(this)"><img src="https://www.dlr.de/content/en/images/2011/1/spacewalk-during-sts-115-mission-september-2006_573.jpg?__blob=normal&v=15__ifc1920w" style="width:100%">
+				<div class="text">ISS Daily Summary Report – 3/05/2021</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">7 / 9</div>
+				<a href="#article7" onclick="triggerEvent(this)"><img src="https://i.ytimg.com/vi/21X5lGlDOfg/maxresdefault.jpg" style="width:100%">
+				<div class="text">NASA TV Broadcasts Saturday Morning spacewalk</div></a>
+			</div>
+
+			<div class="mySlides fade">
+				<div class="numbertext">8 / 9</div>
+				<a href="#article8" onclick="triggerEvent(this)"><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/blog_iss064e026581.jpg" style="width:100%">
+				<div class="text">Sound Checks, Eye Scans as Crew Prepares for Spacewalk on 13/03/2021</div></a>
+			</div>
+			
+			<div class="mySlides fade">
+				<div class="numbertext">9 / 9</div>
+				<a href="#article9" onclick="triggerEvent(this)"><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/blog_iss064e040717.jpg" style="width:100%">
+				<div class="text">Worm Observations, Eye Checks as Weekend Spacewalk Approaches</div></a>
+			</div>
+			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+			<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+			</div>
+			<br>
+
+		<div style="text-align:center">
+			<span class="dot" onclick="currentSlide(1)"></span> 
+			<span class="dot" onclick="currentSlide(2)"></span> 
+			<span class="dot" onclick="currentSlide(3)"></span> 
+			<span class="dot" onclick="currentSlide(4)"></span> 
+			<span class="dot" onclick="currentSlide(5)"></span> 
+			<span class="dot" onclick="currentSlide(6)"></span> 
+			<span class="dot" onclick="currentSlide(7)"></span> 
+			<span class="dot" onclick="currentSlide(8)"></span> 
+			<span class="dot" onclick="currentSlide(9)"></span> 
+		</div>
+	</div>
+
+	<main>
+		<aside class="left">
+			<article id="article1">
+				<header>
+					<div><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/blog_iss064e027247.jpg"></div>
+				</header>
+				<div>
+					<h2 id="article1h2">
+						<a href="#article1">Saturday Spacewalk Set as Crew Works Space Gardening</a>
+					</h2>
+					<p>The Expedition 64 astronauts are gearing up for the third spacewalk in two weeks at the International Space Station. The orbital residents also fit in a variety of space agriculture studies and orbital maintenance tasks on their busy schedule today. NASA astronauts Victor Glover and Michael Hopkins will partner up for...<a href="#article1">Read full post</a></p>
+				</div>
+			</article>
+			<article id="article4">
+				<header>
+					<div><img src="https://blogs.nasa.gov/artemis/wp-content/uploads/sites/303/2021/03/KSC-20210303-PH-ILW01_0008-1024x686.jpg"></div>
+				</header>
+				<div>
+					<h2 id="article4h2">
+						<a href="#article4">Mammoth Artemis I Rocket Boosters Stacked on Mobile Launcher</a>
+					</h2>
+					<p>Stacking is complete for the twin Space Launch System (SLS) solid rocket boosters for NASA's Artemis I mission. Over several weeks, workers used one of five massive cranes to place 10 booster segments and nose assemblies on the mobile launcher inside the Vehicle Assembly Building (VAB) at NASA's Kennedy Space Center...<a href="#article4">Read full post</a></p>
+				</div>
+			</article>
+			<article id="article7">
+				<header>
+					<div>
+						<embed src="https://www.youtube.com/embed/21X5lGlDOfg" height="250px"></embed>
+					</div>
+				</header>
+				<div>
+					<h2 id="article7h2">
+						<a href="#article7">NASA TV Broadcasts Saturday Morning spacewalk</a>
+					</h2>
+					<p>NASA astronauts Victor Glover and Michael Hopkins are scheduled to exit the International Space Station's Quest airlock Saturday to complete tasks that were deferred from earlier spacewalks to allow for the successful installation of modification kits in preparation for future solar array upgrades. The pair will set their spacesuits to battery...<a href="#article7">Read full post</a></p>
+				</div>
+			</article>
+		</aside>
+		<aside class="middle">
+			<article id="article2">
+				<header>
+					<div><!-- <img src="https://blogs.nasa.gov/drthomasz/wp-content/uploads/sites/270/2021/03/rover_drop-300x225.jpg"> -->
+						<embed src="https://www.youtube.com/embed/4czjS9h4Fpg" height="250px"></embed>
+					</div>
+				</header>
+					<h2 id="article2h2">
+						<a href="#article2">Stories of Perseverance</a>
+					</h2>
+				<div>
+					<p>The Expedition 64 crew is wrapping up final preparations before two astronauts exit the International Space Station for a maintenance spacewalk on Saturday morning. The orbital residents also measured lab sound levels and checked their crewmates' eyes to end the workweek...<a href="#article2">Read full post</a></p>
+				</div>
+			</article>
+			<article id="article5">
+				<header>
+					<div><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/MSFC-202000048.jpg"></div>
+				</header>
+				<div>
+					<h2 id="article5h2">
+						<a href="#article5">Astronauts Relax as Station Science Command Celebrates 20 Years</a>
+					</h2>
+					<p>Five astronauts from the Expedition 64 crew are relaxing today after supporting a pair of spacewalks last week. The two cosmonauts from Roscosmos were on duty running science and maintaining systems in the International Space Station's Russian segment...<a href="#article5">Read full post</a></p>
+				</div>
+			</article>
+			<article id="article8">
+				<header>
+					<div><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/blog_iss064e026581.jpg"></div>
+				</header>
+					<h2 id="article8h2">
+						<a href="#article8">Sound Checks, Eye Scans as Crew Prepares for Spacewalk on 13/03/2021</a>
+					</h2>
+				<div>
+					<p>The most recent robotic inhabitant of our planetary neighbor Mars is called Perseverance, as anybody knows by now. Many people have talked about how fitting this name is, and especially how it makes us all feel. Perseverance – doing something despite difficulty or delay in achieving success is a quality we all need...<a href="#article8">Read full post</a></p>
+				</div>
+			</article>
+		</aside>
+		<aside class="right">
+			<article id="article3">
+				<header>
+					<div><img src="https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/nhq202101160007_0.jpg"></div>
+				</header>
+					<h2 id="article3h2">
+						<a href="#article3">Green Run Update: NASA Targets March 18 for SLS Hot Fire Test</a>
+					</h2>
+				<div>
+					<p>NASA is targeting Thursday, March 18 for the second hot fire of the Space Launch System (SLS) rocket's core stage at NASA's Stennis Space Center near Bay St. Louis, Mississippi. After performing tests to demonstrate that a recently repaired liquid oxygen pre-valve was working, the team has continued to prepare the core stage...<a href="#article3">Read full post</a></p>
+				</div>
+			</article>
+			<article id="article6">
+				<header>
+					<div><img src="https://www.dlr.de/content/en/images/2011/1/spacewalk-during-sts-115-mission-september-2006_573.jpg?__blob=normal&v=15__ifc1920w"></div>
+				</header>
+				<div>
+					<h2 id="article6h2">
+						<a href="#article6">ISS Daily Summary Report – 3/05/2021</a>
+					</h2>
+					<p>United States On-orbit Segment (USOS) Extravehicular Activity (EVA) #72 – ISS Upgrades III: Today, EV1 Kate Rubins and EV2 Soichi Noguchi performed a 6 hour 56 minute EVA and completed the following tasks during the ISS Upgrades III EVA: 4B ISS Roll Out Solar Array Mod Kit 2B...<a href="#article6">Read full post</a></p>
+				</div>
+			</article>
+			<article id="article9">
+				<header>
+					<div><img src="https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2021/03/blog_iss064e040717.jpg"></div>
+				</header>
+				<div>
+					<h2 id="article9h2">
+						<a href="#article9">Worm Observations, Eye Checks as Weekend Spacewalk Approaches</a>
+					</h2>
+					<p>The Expedition 64 crew had a busy science day observing worms, readying small satellites for deployment, and conducting vision tests. Two astronauts are also pressing ahead with preparations for the third spacewalk in two weeks at the International Space Station...<a href="#article9">Read full post</a></p>
+				</div>
+			</article>
+		</aside>
+	</main>
+	<footer>
+		<canvas id="myCanvas" width="301" height="101">
+			Your browser does not support the HTML canvas tag.
+		</canvas>
+		<p><small>CosmoStuff | Copyright &#169; 2021 NASA. All Rights Reserved</small></p>
+	</footer>
+	<script>
+		var mybutton = document.getElementById("myBtn");
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				mybutton.style.display = "block";
+			} 
+			else {
+				mybutton.style.display = "none";
+				}
+		}
+	</script>
+	<script type="text/javascript">
+		var colour;
+		var starX;
+		var starY;
+		var size
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.fillStyle = "#153363";
+		ctx.fillRect(0, 0, c.width, c.height);
+
+		ctx.font = "bold 30px verdana, sans-serif ";
+		ctx.fillStyle = "#ebd900";
+		ctx.fillText("COSMO", 35, 60);
+
+		ctx.font = "bold 30px verdana, sans-serif";
+		ctx.fillStyle = "#00b8ff"; 
+		ctx.fillText("STUFF", 160, 60);
+
+		star(800,300,25,"white");
+		star(1800,300,20,"violet")
+		star(300,850,20,"red");
+		star(750,1750,25,"pink")
+		star(1600,1550,20,"cyan")
+		star(6700,350,25,"cyan");
+		star(3700,250,25,"orange");
+		star(3200,1500,20,"violet");
+		star(5000,1600,20,"red");
+		star(5000,1800,25,"yellow");
+		star(4200,300,20,"white");
+		star(7000,1500,25,"orange");
+		star(3100,1800,25,"lime");
+
+		function star(starX, starY, size, colour){
+			ctx.fillStyle = colour;
+			ctx.beginPath();
+			ctx.moveTo(starX/size, starY/size);
+			ctx.lineTo((starX + 33.0 )/size, (starY +  70 )/size);
+			ctx.lineTo((starX + 110.0 )/size, (starY +  78.3 )/size);
+			ctx.lineTo((starX + 54.0 )/size, (starY +  131 )/size);
+			ctx.lineTo((starX + 67.0 )/size, (starY +  205 )/size);
+			ctx.lineTo((starX + 0.0 )/size, (starY +  170 )/size);
+			ctx.lineTo((starX + -66.8 )/size, (starY +  205 )/size);
+			ctx.lineTo((starX + -53.0 )/size, (starY +  131 )/size);
+			ctx.lineTo((starX + -107.0 )/size, (starY +  78 )/size);
+			ctx.lineTo((starX + -33.0 )/size, (starY +  68 )/size);
+			ctx.lineTo(starX/size, starY/size);
+			ctx.closePath();
+			ctx.fill();
+	    }
+	</script>
+	<script>
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}    
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+	      slides[i].style.display = "none";  
+	  }
+	  for (i = 0; i < dots.length; i++) {
+	      dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";  
+	  dots[slideIndex-1].className += " active";
+	}
+
+	function triggerEvent(ele){
+		var aHref = ele.getAttribute("href");
+		var articleNumber = aHref.split("#")[1];
+		var articleElement = document.getElementById(articleNumber);
+		var h2Element = document.getElementById(articleNumber + "h2");
+		articleElement.style.margin="50px 18px 30px";
+		articleElement.style.background="#f4bbff";
+		h2Element.style.fontSize="160%";
+		setTimeout(function(){
+			articleElement.style.background="";
+			articleElement.style.margin="";
+			h2Element.style.fontSize="";
+		},5000);
+	}
+	</script>
+</body>
+</html>

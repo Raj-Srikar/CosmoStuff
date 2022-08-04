@@ -1,2 +1,2 @@
-# CosmoStuff
-A sample blog, that contains a few animated articles on space.
+# [CosmoStuff](https://raj-srikar.github.io/CosmoStuff/)
+This is the first webpage I've ever made. I received this as an assignment for web development at my college. It's a blog with a few animated space-related articles. Although I had some prior exposure to web development, I lacked the actual experience. So I chose to test my abilities with this task and gave it my all. This is my first step in Web Development.
